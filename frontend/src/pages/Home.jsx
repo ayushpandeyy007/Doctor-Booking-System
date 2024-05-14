@@ -53,11 +53,11 @@ const Home = () => {
             </div>
             <div className="flex gap-[30px] justify-end">
               <div>
-                <img src={heroImg01} alt="" className="w-full" />
+                <img src="" alt="" className="w-full" />
               </div>
               <div className="mt-[30px]">
-                <img src={heroImg02} alt="" className="w-full mb-[30px]" />
-                <img src={heroImg03} alt="" className="w-full" />
+                <img src="" alt="" className="w-full mb-[30px]" />
+                <img src="" alt="" className="w-full" />
               </div>
             </div>
           </div>
@@ -78,7 +78,7 @@ const Home = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-[30px] mt-[30px] lg:mt-[55px]">
             <div className="py-[30px] px-5">
               <div className="flex items-center justify-center">
-                <img src={icon01} alt="" />
+                <img src="" alt="" />
               </div>
               <div className="mt-[30px]">
                 <h2 className="text-[26px] leading-9 text-headingColor font-[700] text-center">
@@ -100,7 +100,7 @@ const Home = () => {
             </div>
             <div className="py-[30px] px-5">
               <div className="flex items-center justify-center">
-                <img src={icon02} alt="" />
+                <img src="" alt="" />
               </div>
               <div className="mt-[30px]">
                 <h2 className="text-[26px] leading-9 text-headingColor font-[700] text-center">
@@ -122,7 +122,7 @@ const Home = () => {
             </div>
             <div className="py-[30px] px-5">
               <div className="flex items-center justify-center">
-                <img src={icon03} alt="" />
+                <img src="" alt="" />
               </div>
               <div className="mt-[30px]">
                 <h2 className="text-[26px] leading-9 text-headingColor font-[700] text-center">

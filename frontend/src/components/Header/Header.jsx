@@ -49,7 +49,7 @@ const toggleMenu=( )=> menuRef.current.classList.toggle('show__menu')
       <div className="container">
         <div className="flex items-center justify-between">
           <div>
-            
+            {/* <img src={logo} alt="" /> */}
           </div>
 
           <div className="navigation" ref={menuRef} onClick={toggleMenu}>
