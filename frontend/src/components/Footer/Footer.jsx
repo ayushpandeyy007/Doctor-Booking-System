@@ -102,7 +102,7 @@ justify-center group hover:bg-primaryColor hover:border-none"
           </div>
 
           <div>
-            <h2 className="text-[20px] leading-[30px] font-[700] mb-6 ☐ text-headingColor">
+            <h2 className="text-[20px] leading-[30px] font-[700] mb-6   text-headingColor">
               Suppport
             </h2>
             <ul>
@@ -119,7 +119,7 @@ justify-center group hover:bg-primaryColor hover:border-none"
             </ul>
           </div>
           <div>
-            <h2 className="text-[20px] leading-[30px] font-[700] mb-6 ☐ text-headingColor">
+            <h2 className="text-[20px] leading-[30px] font-[700] mb-6   text-headingColor">
               I want to :
             </h2>
             <ul>
@@ -136,7 +136,7 @@ justify-center group hover:bg-primaryColor hover:border-none"
             </ul>
           </div>
           <div>
-            <h2 className="text-[20px] leading-[30px] font-[700] mb-6 ☐ text-headingColor">
+            <h2 className="text-[20px] leading-[30px] font-[700] mb-6   text-headingColor">
               Quick Links
             </h2>
             <ul>

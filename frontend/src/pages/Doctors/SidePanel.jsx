@@ -9,7 +9,7 @@ const SidePanel = () => {
         </span>
       </div>
       <div className="mt-[30px]">
-        <p className="text__para mt-0 font-semibold ☐ text-headingColor">
+        <p className="text__para mt-0 font-semibold   text-headingColor">
           Available Time Slots:
         </p>
         <ul className="mt-3">
