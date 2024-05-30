@@ -36,7 +36,14 @@ body {
 .swiper-slide.swiper-slide-next p {
   color: #fff !important;
 }
-
+.swiper-pagination{
+  margin-top:55px !important;
+  position: unset !important;
+    text-align: center !important;
+    transition: 300ms opacity;
+    transform: translate3d(0, 0, 0);
+    z-index: 10;
+}
 .sticky__header {
   width: 100%;
   height: 80px;
