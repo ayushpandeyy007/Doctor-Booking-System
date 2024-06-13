@@ -9,7 +9,6 @@ export const updateDoctor = async (req, res) => {
       { $set: req.body },
       { new: true }
     );
-
     res
       .status(200)
       .json({
@@ -17,6 +16,7 @@ export const updateDoctor = async (req, res) => {
         message: "Successfully updated",
         data: updateDoctor,
       });
+
   } catch (err) {
     res.status(500).json({ success: false, message: "Failed to update" });
   }

@@ -8,7 +8,7 @@ const router = express.Router({mergeParams: true});
 
 //doctor/d
 router
-.route('/')
+.route("/")
 .get(getAllReviews)
 .post(authenticate, restrict(["patient"]), createReview);
 
