@@ -21,13 +21,14 @@ const Login = () => {
     event.preventDefault();
     setLoading(true);
     try {
-      const res = await fetch(`${BASE_URL}/auth/login`, {
-        method: "post",
+      const res = await fetch(`${BASE_URL}/api/v1/auth/login`, {
+        method: "POST",
         headers: {
-          "Content-Type": "application/jason",
+          "Content-Type": "application/json", // Fix typo from "application/jason"
         },
         body: JSON.stringify(formData),
       });
+
       const result = await res.json();
       if (!res.ok) {
         throw new Error(result.message);
@@ -35,12 +36,12 @@ const Login = () => {
 
       dispatch({
         type: "LOGIN_SUCCESS",
-        payload:{
+        payload: {
           user: result.data,
           token: result.token,
           role: result.role,
         },
-      })
+      });
 
       setLoading(false);
       toast.success(result.message);
@@ -50,6 +51,7 @@ const Login = () => {
       setLoading(false);
     }
   };
+
   return (
     <section>
       <div className="w-full max-w-[570px] mx-auto rounded-lg shadow-md md:p-10">

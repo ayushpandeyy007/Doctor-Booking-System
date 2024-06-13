@@ -9,12 +9,14 @@ export const updateDoctor = async (req, res) => {
       { $set: req.body },
       { new: true }
     );
+    res
+      .status(200)
+      .json({
+        success: true,
+        message: "Successfully updated",
+        data: updateDoctor,
+      });
 
-    res.status(200).json({
-      success: true,
-      message: "Successfully updated",
-      data: updateDoctor,
-    });
   } catch (err) {
     res.status(500).json({ success: false, message: "Failed to update" });
   }
@@ -64,8 +66,6 @@ export const getAllDoctor = async (req, res) => {
     } else {
       doctors = await Doctor.find({ isApproved: "approved" }).select(
         "-password"
-
-        
       );
     }
 
