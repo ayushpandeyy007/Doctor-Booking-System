@@ -5,7 +5,7 @@ import avatar from "../assets/images/avatar-icon.png";
 import { Link, useNavigate } from "react-router-dom";
 import uploadImageToCloudinary from "../utils/uploadCloudinary";
 import { BASE_URL } from "../config";
-import HashLoader from 'react-spinners/HashLoader';
+import HashLoader from "react-spinners/HashLoader";
 
 const Signup = () => {
   const [selectedFile, setSelectedFile] = useState(null);
@@ -38,13 +38,14 @@ const Signup = () => {
     event.preventDefault();
     setLoading(true);
     try {
-      const res = await fetch(`${BASE_URL}/auth/register`, {
-        method: "post",
+      const res = await fetch(`${BASE_URL}/api/v1/auth/register`, {
+        method: "POST",
         headers: {
-          "Content-Type": "application/jason",
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(formData),
       });
+
       const { message } = await res.json();
       if (!res.ok) {
         throw new Error(message);
@@ -57,6 +58,7 @@ const Signup = () => {
       setLoading(false);
     }
   };
+
   return (
     <section className="px-5 xl:px-0">
       <div className="max-w-[1170px] mx-auto">
@@ -105,7 +107,7 @@ focus:border-b-primaryColor text-[16px] leading-7 text-headingColor
                   onChange={handleInputChange}
                   type="password"
                   placeholder="password"
-                  name="Password"
+                  name="password"
                   className="w-full pr-4 py-3 border-b border-solid border-[#0066ff61] focus:outline-none
 focus:border-b-primaryColor text-[16px] leading-7 text-headingColor
  placeholder:text-textColor rounded-md cursor-pointer"
@@ -148,9 +150,15 @@ focus:outline-none"
               </div>
 
               <div className="mb-5 flex items-center gap-3">
-                {selectedFile && <figure className="w-[60px] h-[60px] rounded-full border-2 border-solid border-primaryColor flex items-center justify-center">
-                  <img src={previewURL} alt="" className="w-full rounded-full" />
-                </figure>}
+                {selectedFile && (
+                  <figure className="w-[60px] h-[60px] rounded-full border-2 border-solid border-primaryColor flex items-center justify-center">
+                    <img
+                      src={previewURL}
+                      alt=""
+                      className="w-full rounded-full"
+                    />
+                  </figure>
+                )}
 
                 <div className="relative w-[130px] h-[50px]">
                   <input
@@ -172,11 +180,15 @@ font-semibold rounded-lg truncate cursor-pointer"
               </div>
               <div className="mt-7">
                 <button
-                disabled={loading && true}
+                  disabled={loading && true}
                   type="submit"
                   className="w-full bg-primaryColor text-white text-[18px] leading-[30px] rounded-lg px-4 py-3"
                 >
-                  {loading ? <HashLoader size={35} color="#ffffff"/> :'Sign Up'}
+                  {loading ? (
+                    <HashLoader size={35} color="#ffffff" />
+                  ) : (
+                    "Sign Up"
+                  )}
                 </button>
               </div>
               <p className="mt-5  text-textColor text-center">

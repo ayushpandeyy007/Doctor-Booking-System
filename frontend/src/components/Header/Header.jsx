@@ -1,8 +1,9 @@
-import React, {useEffect, useRef} from "react";
+import React, {useEffect, useRef, useContext} from "react";
 import logo from "../../assets/images/logo.png";
 import userImg from "../../assets/images/avatar-icon.png"
 import {BiMenu} from 'react-icons/bi'
 import {NavLink, Link} from 'react-router-dom'
+// import {authcontext} from '../../context/AuthContext';
 const navlinks=[
   {
     path:'/home',
@@ -13,7 +14,7 @@ const navlinks=[
     display: 'Find a Doctor'
   },
   {
-    path:'/Services',
+    path:'/services',
     display: 'Services'
   },
   {
@@ -25,7 +26,7 @@ const navlinks=[
 const Header = () => {
   const headerRef=useRef(null)
   const menuRef = useRef(null)
-
+  // const {user, role, token} =useContext(authcontext)
 
 const handleStickyHeader =()=>{
   window.addEventListener('scroll', ()=>{
