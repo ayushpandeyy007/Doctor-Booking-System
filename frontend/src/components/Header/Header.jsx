@@ -1,57 +1,56 @@
-import React, {useEffect, useRef, useContext} from "react";
+import React, { useEffect, useRef, useContext } from "react";
 import logo from "../../assets/images/logo.png";
-import userImg from "../../assets/images/avatar-icon.png"
-import {BiMenu} from 'react-icons/bi'
-import {NavLink, Link} from 'react-router-dom'
-// import {authcontext} from '../../context/AuthContext';
-const navlinks=[
+import { BiMenu } from "react-icons/bi";
+import { NavLink, Link } from "react-router-dom";
+import { authContext } from "../../context/AuthContext";
+const navlinks = [
   {
-    path:'/home',
-    display: 'Home'
+    path: "/home",
+    display: "Home",
   },
   {
-    path:'/doctors',
-    display: 'Find a Doctor'
+    path: "/doctors",
+    display: "Find a Doctor",
   },
   {
-    path:'/services',
-    display: 'Services'
+    path: "/services",
+    display: "Services",
   },
   {
-    path:'/contact',
-    display: 'Contact'
+    path: "/contact",
+    display: "Contact",
   },
- 
-]
+];
 const Header = () => {
-  const headerRef=useRef(null)
-  const menuRef = useRef(null)
-  // const {user, role, token} =useContext(authcontext)
+  const headerRef = useRef(null);
+  const menuRef = useRef(null);
+  const { user, role, token } = useContext(authContext);
+console.log(user?.name, "wrhfuwefw");
+  const handleStickyHeader = () => {
+    window.addEventListener("scroll", () => {
+      if (
+        document.body.scrollTop > 80 ||
+        document.documentElement.scrollTop > 80
+      ) {
+        headerRef.current.classList.add("sticky__header");
+      } else {
+        headerRef.current.classList.add("sticky__header");
+      }
+    });
+  };
 
-const handleStickyHeader =()=>{
-  window.addEventListener('scroll', ()=>{
-  if (document.body.scrollTop> 80 || document.documentElement.scrollTop>80){
-    headerRef.current.classList.add('sticky__header')
-  }else{
-    headerRef.current.classList.add('sticky__header')
-  }
-  })
-}
+  useEffect(() => {
+    handleStickyHeader();
+    return () => window.removeEventListener("scroll", handleStickyHeader);
+  });
 
-useEffect(() => {
-  handleStickyHeader()
-  return () => window.removeEventListener('scroll',handleStickyHeader)
-})
-
-const toggleMenu=( )=> menuRef.current.classList.toggle('show__menu')
+  const toggleMenu = () => menuRef.current.classList.toggle("show__menu");
 
   return (
     <header className="header flex items-center" ref={headerRef}>
       <div className="container">
         <div className="flex items-center justify-between">
-          <div>
-            {/* <img src={logo} alt="" /> */}
-          </div>
+          <div>{/* <img src={logo} alt="" /> */}</div>
 
           <div className="navigation" ref={menuRef} onClick={toggleMenu}>
             <ul className="menu flex items-center gap-[2.7rem]">
@@ -71,20 +70,36 @@ const toggleMenu=( )=> menuRef.current.classList.toggle('show__menu')
               ))}
             </ul>
           </div>
-
           <div className="flex items-center gap-4">
-            <div className="hidden">
-              <Link to='/'>
-                <figure className="w-[35px] h-[35px] rounded-full cursor-pointer">
-                  <img src={userImg} className='w-full rounded-full' alt="" />
-                </figure>
+            {token && user ? (
+              <div className="">
+                <Link
+                  to={`${
+                    role === "doctor"
+                      ? "/doctors/profile/me"
+                      : "users/profile/me"
+                  }`}
+                >
+                  <figure className="w-[35px] h-[35px] rounded-full cursor-pointer">
+                    <img
+                      src={user?.photo}
+                      className="w-full rounded-full"
+                      alt=""
+                    />
+                  </figure>
+                  {/* <h1>{user?.name}</h1> */}
+                </Link>
+              </div>
+            ) : (
+              <Link to="/login">
+                <button className="bg-primaryColor py-2 px-6 text-white font-[600] h-[44px] flex items-center justify-center rounded-[50px]">
+                  Login
+                </button>
               </Link>
-            </div>
-            <Link to='/login'>
-              <button className="bg-primaryColor py-2 px-6 text-white font-[600] h-[44px] flex items-center justify-center rounded-[50px]">Login</button>
-            </Link>
+            )}
+
             <span className="md:hidden" onClick={toggleMenu}>
-              <BiMenu className="w-6 h-6 cursor-pointer"/>
+              <BiMenu className="w-6 h-6 cursor-pointer" />
             </span>
           </div>
         </div>
