@@ -6,7 +6,8 @@ import Tabs from "./Tabs";
 import { useState } from "react";
 import starIcon from "../../assets/images/Star.png";
 import DoctorCard from "../../components/Doctors/DoctorCard";
-import DoctorAbout from '../../../src/pages/Doctors/DoctorAbout'
+import DoctorAbout from "../../../src/pages/Doctors/DoctorAbout";
+import Profile from "./Profile";
 const Dashboard = () => {
   const { data, loading, error } = useGetProfile(
     `${BASE_URL}/api/v1/doctors/profile/me`
@@ -95,7 +96,7 @@ lg:leading-6 font-semibold"
                   </div>
                 )}
                 {tab === "appointments" && <div>appointments</div>}
-                {tab === "settings" && <div>profile settings</div>}
+                {tab === "settings" && <Profile />}
               </div>
             </div>
           </div>
